@@ -1,0 +1,50 @@
+## Requirements
+
+# R (≥ 4.0)
+
+# Terminal / PowerShell (or RStudio).
+
+# Files provided:
+
+# run_scoring_combined.R (the script)
+
+# data/sample_input.xlsx 
+
+#Install packages
+Rscript -e 'install.packages(c("readxl","dplyr","stringr","purrr","janitor","openxlsx"), lib="~/R/libs", repos="https://cloud.r-project.org")'
+
+# Rscript run_scoring_combined.R <input_excel.xlsx> <output_excel.xlsx>
+
+# Example (Linux / macOS / WSL)
+Rscript run_scoring_combined.R data/sample_input.xlsx results/scoring_combined.xlsx
+
+# WSL example (if your file is on Windows C: drive)
+Rscript run_scoring_combined.R /mnt/c/Users/Reviewer/Downloads/test2.xlsx /home/reviewer/results/scoring_combined.xlsx
+
+#Linux example
+chmod +x run_scoring_combined.R
+./run_scoring_combined.R data/sample_input.xlsx results/scoring_combined.xlsx
+
+## Run inside RStudio 
+# Open RStudio.
+# File → Open → run_scoring_combined.R.
+# Edit the in_file / out_file defaults at the top (or run with CLI via Terminal).
+# Click Source (or run line-by-line)
+# Note: commandArgs(trailingOnly = TRUE) is used in the script to read CLI args. When you run with Rscript <script> <in> <out> those arguments are available to the script. In RStudio interactive commandArgs(trailingOnly=TRUE) returns character(0) so the script falls back to the default input/output filenames defined in the script.
+
+# The script prints a short summary and writes an Excel workbook at the path you specified (e.g. results/scoring_combined.xlsx).
+
+# If you used defaults and there is no results/ folder, create it first:
+
+mkdir -p results
+
+
+### Example full command for Windows
+
+# Open PowerShell 
+
+cd C:\Users\Computer\Downloads
+Rscript run_scoring_combined.R C:\Users\Computer\Downloads\test2.xlsx C:\Users\Computer\Downloads\results\scoring_combined.xlsx
+
+# create results folder first if needed:
+mkdir C:\Users\Computer\Downloads\results
